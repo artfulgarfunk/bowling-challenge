@@ -14,5 +14,12 @@ describe('scoreCard', function(){
     it('have an array of the number of pins knocked down', function(){
       expect(scorecard.pins).toEqual([])
     });
+
+    it('record the number of pins knocked down in each bowl', function(){
+      scorecard.bowl(5)
+      scorecard.bowl(2)
+      expect(scorecard.pins[0]).toEqual(5)
+      expect(scorecard.pins[1]).toEqual(2)
+    })
   });
 })
