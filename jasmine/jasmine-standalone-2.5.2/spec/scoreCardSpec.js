@@ -74,13 +74,17 @@ describe('Feature Tests', function(){
      it('add double the score of the next 2 bowls after a strike on the second bowl', function() {
        bowl.turn(10)
        scorecard.addBowl(bowl)
-       expect(scorecard.strikeBonus).toBe(true)
        bowl2.turn(5)
        scorecard.addBowl(bowl2)
-      //  bowl3.turn(4)
-      //  scorecard.addBowl(bowl3)
-       expect(scorecard.strikeBonus).toBe(false)
-      //  expect(scorecard.totalScore).toEqual(28)
+       bowl3.turn(4)
+       scorecard.addBowl(bowl3)
+       bowl4.turn(10)
+       scorecard.addBowl(bowl4)
+       bowl5.turn(4)
+       scorecard.addBowl(bowl5)
+       bowl6.turn(5)
+       scorecard.addBowl(bowl6)
+       expect(scorecard.totalScore).toEqual(56)
      });
 
   });

@@ -10,6 +10,7 @@ function scoreCard () {
 };
 
 scoreCard.prototype.addBowl = function(bowl) {
+
     this.addToScore(bowl.pins)
     this.strikeBonusUpdate(bowl.pins)
 
@@ -17,7 +18,6 @@ scoreCard.prototype.addBowl = function(bowl) {
       this.currentFrame.push(bowl.pins);
       this.frames.push(this.currentFrame);
       this.spareBonusUpdate(this.currentFrame[0],this.currentFrame[1])
-
       this.currentFrame = []
       }
     else {
@@ -27,10 +27,16 @@ scoreCard.prototype.addBowl = function(bowl) {
 }
 
 scoreCard.prototype.addToScore = function(pins) {
-  if (this.spareBonus === true) {
+  if (this.strikeBonus === true) {
       this.totalScore += pins*2
-      this.spareBonus === false
-    } else {
+      this.strikeBonus = false
+      this.strikeBonus1 = true
+    }
+  else if (this.spareBonus === true || this.strikeBonus1 === true) {
+      this.totalScore += pins*2
+      this.spareBonus = false
+      this.strikeBonus1 = false
+  } else {
       this.totalScore += pins
     }
 // this.BonusUpdate(pins1,pins2)
@@ -51,7 +57,6 @@ scoreCard.prototype.strikeBonusUpdate = function(pins) {
   } else { this.strikeBonus = false}
 }
 
-//
 // //     if (this.strikeBonus === true) {
 // //       this.addToScore(pins1,pins2)
 // //       this.addToScore(pins1,pins2)
