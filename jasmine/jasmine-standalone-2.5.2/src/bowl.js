@@ -1,9 +1,9 @@
 'use strict';
 
-function Bowl() {
+function Bowl () {
     this.pins = 0
 };
 
-frame.prototype.add = function(pins) {
+Bowl.prototype.turn = function(pins) {
   this.pins += pins
 };
