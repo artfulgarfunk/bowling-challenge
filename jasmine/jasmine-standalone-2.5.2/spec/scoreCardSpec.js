@@ -71,6 +71,18 @@ describe('Feature Tests', function(){
       expect(scorecard.totalScore).toEqual(21);
     });
 
+     it('add double the score of the next 2 bowls after a strike on the second bowl', function() {
+       bowl.turn(10)
+       scorecard.addBowl(bowl)
+       expect(scorecard.strikeBonus).toBe(true)
+       bowl2.turn(5)
+       scorecard.addBowl(bowl2)
+      //  bowl3.turn(4)
+      //  scorecard.addBowl(bowl3)
+       expect(scorecard.strikeBonus).toBe(false)
+      //  expect(scorecard.totalScore).toEqual(28)
+     });
+
   });
 });
     // it('have an array of the number of pins knocked down', function(){
@@ -97,13 +109,3 @@ describe('Feature Tests', function(){
     //
 
     //
-    //  it('add double the score of the next 2 bowls after a strike on the second bowl', function() {
-    //    scorecard.addBowl(0,10)
-    //    expect(scorecard.spareBonus).toBe(false)
-    //    expect(scorecard.strikeBonus).toBe(true)
-    //    scorecard.addBowl(5,5)
-    //    expect(scorecard.totalScore).toEqual(30)
-    //    scorecard.addBowl(5,4)
-    //    expect(scorecard.totalScore).toEqual(44)
-    //
-    //  });

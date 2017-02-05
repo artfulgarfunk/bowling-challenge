@@ -11,11 +11,13 @@ function scoreCard () {
 
 scoreCard.prototype.addBowl = function(bowl) {
     this.addToScore(bowl.pins)
+    this.strikeBonusUpdate(bowl.pins)
 
     if (this.currentFrame.length === 1 || bowl.pins === 10) {
       this.currentFrame.push(bowl.pins);
       this.frames.push(this.currentFrame);
       this.spareBonusUpdate(this.currentFrame[0],this.currentFrame[1])
+
       this.currentFrame = []
       }
     else {
@@ -41,6 +43,12 @@ scoreCard.prototype.spareBonusUpdate = function(pins1,pins2) {
     else {
       this.spareBonus = false
     }
+}
+
+scoreCard.prototype.strikeBonusUpdate = function(pins) {
+  if (pins === 10) {
+    this.strikeBonus = true
+  } else { this.strikeBonus = false}
 }
 
 //
