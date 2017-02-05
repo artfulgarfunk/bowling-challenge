@@ -10,20 +10,22 @@ function scoreCard () {
 };
 
 scoreCard.prototype.addBowl = function(bowl) {
-
     this.addToScore(bowl.pins)
     this.strikeBonusUpdate(bowl.pins)
+    this.addBowlScore(bowl.pins)
 
-    if (this.currentFrame.length === 1 || bowl.pins === 10) {
-      this.currentFrame.push(bowl.pins);
-      this.frames.push(this.currentFrame);
-      this.spareBonusUpdate(this.currentFrame[0],this.currentFrame[1])
-      this.currentFrame = []
-      }
-    else {
-      this.currentFrame.push(bowl.pins);
-      this.spareBonusUpdate(this.currentFrame[0],this.currentFrame[1])
-    };
+}
+
+scoreCard.prototype.addBowlScore = function(bowlscore) {
+  if (this.currentFrame.length === 1 || bowlscore === 10) {
+    this.currentFrame.push(bowlscore);
+    this.frames.push(this.currentFrame);
+    this.spareBonusUpdate(this.currentFrame[0],this.currentFrame[1])
+    this.currentFrame = []
+    }
+  else {
+    this.currentFrame.push(bowlscore);
+  };
 }
 
 scoreCard.prototype.addToScore = function(pins) {
@@ -39,9 +41,7 @@ scoreCard.prototype.addToScore = function(pins) {
   } else {
       this.totalScore += pins
     }
-// this.BonusUpdate(pins1,pins2)
 }
-
 
 scoreCard.prototype.spareBonusUpdate = function(pins1,pins2) {
     if (pins1 + pins2 === 10)
@@ -56,32 +56,3 @@ scoreCard.prototype.strikeBonusUpdate = function(pins) {
     this.strikeBonus = true
   } else { this.strikeBonus = false}
 }
-
-// //     if (this.strikeBonus === true) {
-// //       this.addToScore(pins1,pins2)
-// //       this.addToScore(pins1,pins2)
-// //       this.strikeBonus1 = true
-// //     } else if (this.spareBonus === true)
-// //       { this.totalScore += pins1
-// //         this.addToScore(pins1,pins2)
-// //     } else {
-// //       this.addToScore(pins1,pins2)
-// //    };
-// //    this.currentFrame = []
-// // };
-//
-// // keep all this logic and run it on each frame?
-// scoreCard.prototype.BonusUpdate = function(pins1, pins2) {
-//   if (pins1 === 10 || pins2 === 10) {
-//     this.strikeBonus = true
-//     this.spareBonus = false
-//     this.strikeBonus1 = false
-// } else if (pins1 + pins2 >= 10)
-//     {this.spareBonus = true
-//     this.strikeBonus = false
-//     this.strikeBonus1 = false}
-//   else {
-//     this.spareBonus = false
-//   };
-// }
-//

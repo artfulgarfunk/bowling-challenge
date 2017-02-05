@@ -47,14 +47,7 @@ describe('Feature Tests', function(){
       expect(scorecard.frames[0]).toEqual([0,10])
       expect(scorecard.frames[1]).toEqual([3,3])
       expect(scorecard.frames[2]).toEqual([10])
-    });
-
-    it('activate the Spare Bonus when the player get a spare', function(){
-      bowl.turn(5)
-      scorecard.addBowl(bowl)
-      bowl2.turn(5)
-      scorecard.addBowl(bowl2)
-      expect(scorecard.spareBonus).toBe(true)
+      expect(scorecard.frames.length).toEqual(3)
     });
 
     it('add double the score of the next bowl after a spare', function() {
@@ -87,29 +80,7 @@ describe('Feature Tests', function(){
        expect(scorecard.totalScore).toEqual(56)
      });
 
+
+
   });
 });
-    // it('have an array of the number of pins knocked down', function(){
-    //   expect(scorecard.frames).toEqual([])
-    // });
-    //
-
-    // it('add the number of pins knocked down to the players total score', function(){
-    //   scorecard.addBowl(5,2)
-    //   expect(scorecard.totalScore).toEqual(7)
-    // });
-    //
-    // it('record the number of pins knocked down as pair of scores in a new frame array', function() {
-    //   scorecard.addBowl(5,2)
-    //   expect(scorecard.frames[0][0]).toEqual(5)
-    //   expect(scorecard.frames[0][1]).toEqual(2)
-    // });
-    //
-    //
-    // it('deactivate the Spare Bonus when the player does not get a spare', function(){
-    //   scorecard.addBowl(4,5)
-    //   expect(scorecard.spareBonus).toBe(false)
-    // });
-    //
-
-    //
