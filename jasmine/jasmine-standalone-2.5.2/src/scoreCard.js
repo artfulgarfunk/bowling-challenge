@@ -12,19 +12,20 @@ function scoreCard () {
 scoreCard.prototype.addBowl = function(bowl) {
     this.addToScore(bowl.pins)
     this.strikeBonusUpdate(bowl.pins)
-    this.addBowlScore(bowl.pins)
+    this.addBowlFrame(bowl.pins)
 
 }
 
-scoreCard.prototype.addBowlScore = function(bowlscore) {
-  if (this.currentFrame.length === 1 || bowlscore === 10) {
-    this.currentFrame.push(bowlscore);
+scoreCard.prototype.addBowlFrame = function(bowlscore) {
+  this.currentFrame.push(bowlscore);
+  
+  if (this.currentFrame.length === 2 || bowlscore === 10) {
     this.frames.push(this.currentFrame);
     this.spareBonusUpdate(this.currentFrame[0],this.currentFrame[1])
     this.currentFrame = []
     }
   else {
-    this.currentFrame.push(bowlscore);
+    // this.currentFrame.push(bowlscore);
   };
 }
 
