@@ -43,7 +43,7 @@ describe('scoreCard', function(){
       expect(scorecard.spareBonus).toBe(false)
     });
 
-    it('add double the score of the next bowl (first bowl of the next frame) after a spare', function() {
+    it('add double the score of the next bowl after a spare', function() {
       scorecard.bowl(5,5)
       expect(scorecard.spareBonus).toBe(true)
       expect(scorecard.score).toBe(10)
@@ -51,8 +51,15 @@ describe('scoreCard', function(){
       expect(scorecard.score).toEqual(23);
     });
 
-    // it('add double the score of the next 2 bowls when the player gets a strike', function {
-    //
-    // })
+     it('add double the score of the next 2 bowls after a strike', function() {
+       scorecard.bowl(0,10)
+       expect(scorecard.spareBonus).toBe(false)
+       expect(scorecard.strikeBonus).toBe(true)
+       scorecard.bowl(5,5)
+       expect(scorecard.score).toEqual(30)
+       scorecard.bowl(5,4)
+       expect(scorecard.score).toEqual(44)
+     })
+
   });
 })
