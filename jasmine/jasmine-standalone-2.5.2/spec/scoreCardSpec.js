@@ -10,5 +10,9 @@ describe('scoreCard', function(){
     it('start at a score of zero', function(){
       expect(scorecard.score).toBe(0)
     });
+
+    it('have an array of the number of pins knocked down', function(){
+      expect(scorecard.pins).toEqual([])
+    });
   });
 })
